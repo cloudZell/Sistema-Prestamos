@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Panel de Administración - Sistema de Préstamos</title>
+  <link rel="stylesheet" href="/public/css/estilos.css">
+  <link rel="stylesheet" href="/public/css/balance-detail.css">
+  <style>
+    .table-container {
+      overflow-x: auto;
+      margin: 0 -12px;
+      padding: 0 12px;
+    }
+    
+    .table-admin {
+      width: 100%;
+      border-collapse: collapse;
+      white-space: nowrap;
+    }
+    
+    .table-admin th,
+    .table-admin td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .table-admin th {
+      background-color: #f8fafc;
+      font-weight: 600;
+      text-align: left;
+    }
+    
+    .text-right {
+      text-align: right !important;
+    }
+    
+    .text-center {
+      text-align: center !important;
+    }
+    
+    .table-admin td {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .table-admin tbody tr:hover {
+      background-color: #f8fafc;
+    }
+    
+    @media (max-width: 720px) {
+      .admin-panel {
+        padding: 10px;
+      }
+      
+      .table-admin {
+        font-size: 14px;
+      }
+      
+      .table-admin th,
+      .table-admin td {
+        padding: 10px 12px;
+      }
+      
+      .admin-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .admin-nav button {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Panel de Administración</h1>
+    <nav>
+      <!-- <a href="/vistas/dashboard.html">Panel usuario</a> -->
+      <a href="/vistas/perfil.html">Perfil</a>
+      <button id="btnCerrarSesion" class="btn btn.ghost">Cerrar sesión</button>
+    </nav>
+  </header>
+
+  <main class="contenedor admin-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div class="admin-nav" style="display:flex;gap:8px">
+        <button class="btn secondary" data-tab="usuarios">Usuarios</button>
+        <button class="btn secondary" data-tab="resumen">Resumen</button>
+        <button class="btn secondary" data-tab="prestamos">Préstamos</button>
+      </div>
+      <div>
+        <button class="btn" id="adminNewLoanBtn">Nuevo préstamo</button>
+      </div>
+    </div>
+
+    <section class="card" data-panel="usuarios">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h2>Lista de Usuarios</h2>
+        <button class="btn" id="btnNuevoUsuario">Nuevo Usuario</button>
+      </div>
+      <div class="table-container">
+        <table id="tablaUsuarios" class="table table-admin">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" data-panel="resumen" style="display:none">
+      <h2>Resumen por usuario</h2>
+      <table id="tablaResumenUsuarios" class="table table-admin">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Préstamos</th>
+            <th>Capital total</th>
+            <th>Ganancia estimada</th>
+            <th>Total pagado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card" data-panel="prestamos" style="display:none">
+      <h2>Préstamos Totales (detallado)</h2>
+      <div class="table-container">
+        <table id="tablaPrestamosAdmin" class="table table-admin">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th class="text-right">Monto</th>
+              <th class="text-right">Interés (%)</th>
+              <th class="text-right">Plazo</th>
+              <th class="text-right">Ganancia</th>
+              <th class="text-right">Pagado</th>
+              <th class="text-right">Saldo</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/admin.js"></script>
+  <!-- <script src="/public/js/highlight-no-class.js"></script> -->
+</body>
+</html>

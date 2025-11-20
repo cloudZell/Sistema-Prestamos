@@ -1,0 +1,33 @@
+.balance-detail {
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+/* Ajustes de tamaño para que se integren mejor con la tipografía del dashboard */
+.balance-detail .monto-total {
+    /* ligeramente más pequeño para no competir con el encabezado */
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.balance-detail .saldo-pendiente {
+    /* un poco menos grande que antes, sigue siendo visible */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.balance-detail .estado-pagado {
+    color: #4CAF50;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(76, 175, 80, 0.08);
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.8rem;
+}

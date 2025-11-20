@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Perfil de Usuario - Sistema de Préstamos</title>
+  <link rel="stylesheet" href="/public/css/estilos.css">
+  <style>
+    @media (max-width: 720px) {
+      .contenedor {
+        padding: 10px;
+      }
+      .card {
+        padding: 15px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Perfil del Usuario</h1>
+    <nav>
+      <a href="/vistas/dashboard.html">Inicio</a>
+      <button id="btnCerrarSesion" class="btn ghost">Cerrar sesión</button>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <section class="card">
+      <h2>Datos personales</h2>
+      <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
+      <p><strong>Correo:</strong> <span id="perfilCorreo"></span></p>
+      <p><strong>Rol:</strong> <span id="perfilRol"></span></p>
+
+      <h3>Actualizar nombre</h3>
+      <div class="form-group">
+        <input type="text" id="nuevoNombre" placeholder="Nuevo nombre">
+        <button id="btnActualizarNombre" class="btn">Actualizar</button>
+      </div>
+
+      <h3>Cambiar contraseña</h3>
+      <div class="form-group">
+        <input type="password" id="nuevaContrasena" placeholder="Nueva contraseña">
+        <button id="btnCambiarContrasena" class="btn">Cambiar</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/perfil.js"></script>
+  <!-- <script src="/public/js/highlight-no-class.js"></script> -->
+</body>
+</html>

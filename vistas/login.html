@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Iniciar Sesión - Sistema de Préstamos</title>
+  <link rel="stylesheet" href="/public/css/estilos.css">
+  <style>
+    @media (max-width: 480px) {
+      .contenedor-form {
+        margin: 20px 10px;
+        padding: 15px;
+      }
+      .form-group {
+        margin-bottom: 12px;
+      }
+      input {
+        font-size: 16px; /* Previene zoom en iOS */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor-form">
+    <h2>Iniciar Sesión</h2>
+    <form id="formLogin">
+<div class="form-group">
+
+      <label for="email">Correo electrónico:</label>
+      
+<input type="email" id="email" required>
+</div>
+
+<div class="form-group">
+
+
+      <label for="password">Contraseña:</label>
+      
+<input type="password" id="password" required>
+</div>
+
+
+  <button type="submit" class="btn">Ingresar</button>
+    </form>
+
+    <p>¿No tienes cuenta? <a href="/vistas/registro.html">Regístrate aquí</a></p>
+  </div>
+
+  <script src="/public/js/ui.js"></script>
+  <script src="/public/js/login.js"></script>
+  <!-- <script src="/public/js/highlight-no-class.js"></script> -->
+</body>
+</html>

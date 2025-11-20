@@ -1,0 +1,661 @@
+/* =========================
+   Variables y reset
+   ========================= */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --primary: #0ea5a4;
+  --primary-dark: #0b7b74;
+  --danger: #ef4444;
+  --success: #16a34a;
+  --shadow: 0 6px 18px rgba(9, 30, 66, 0.06);
+  --radius: 10px;
+  --gap: 12px;
+  --max-width: 1100px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 390px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =========================
+   Contenedores y layout
+   ========================= */
+.q
+
+.cabecera{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--card);
+  padding:14px 18px;
+  border-radius:12px;
+  box-shadow: var(--shadow);
+  margin-bottom:14px;
+}
+
+.cabecera h1{ font-size:20px; }
+.cabecera nav{ display:flex; gap:10px; align-items:center; }
+.cabecera nav a, .cabecera nav button{
+  color:var(--text); text-decoration:none; font-size:14px; background:none; border:none; cursor:pointer;
+}
+
+/* =========================
+   Tarjetas
+   ========================= */
+.card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(12,15,20,0.04);
+  margin-bottom: 12px;
+}
+
+.card h2, .card h3 { margin-bottom:8px; }
+.card .muted { color: var(--muted); font-size:13px; }
+
+/* =========================
+   Formularios (global)
+   ========================= */
+.form-group{ margin-bottom:10px; display:flex; flex-direction:column; gap:6px; }
+label{ font-size:14px; color:var(--muted); }
+input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], input[type="date"], select, textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #e6eef2;
+  background: #fff;
+  font-size:15px;
+  color:var(--text);
+  outline: none;
+  transition: box-shadow .12s, border-color .12s;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: var(--primary);
+  box-shadow: 0 4px 18px rgba(14,165,164,0.08);
+}
+
+/* Botones */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding:9px 12px;
+  border-radius:10px;
+  background:var(--primary);
+  color:#fff; border:none; cursor:pointer; font-weight:600;
+  text-decoration:none;
+}
+.btn.small{ padding:6px 8px; font-size:14px; }
+.btn.secondary{
+  background:#eef6f5; color:var(--primary); border:1px solid rgba(14,165,164,0.12);
+}
+.btn.ghost{
+  background:transparent; color:var(--text); border:1px solid #e6eef2;
+}
+.btn.danger{ background:var(--danger); }
+
+/* =========================
+   Login / Registro (centrado)
+   ========================= */
+.contenedor-form{
+  max-width:480px;
+  margin:60px auto;
+  padding:22px;
+  border-radius:12px;
+  background:var(--card);
+  box-shadow: var(--shadow);
+}
+.contenedor-form h2{ margin-bottom:12px; font-size:20px; }
+.contenedor-form form{ display:flex; flex-direction:column; gap:10px; }
+
+/* =========================
+   Dashboard layout (grid)
+   ========================= */
+.grid{
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--gap);
+  align-items:start;
+}
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+/* Area izquierda */
+.sidebar-card{ position:sticky; top:16px; }
+
+/* Lista de préstamos */
+.list-item{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px; border-radius:8px; border:1px solid #f1f5f9; margin-bottom:8px;
+}
+.list-item .meta{ color:var(--muted); font-size:13px; }
+
+/* Tabla genérica */
+.table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+}
+.table th, .table td{
+  padding:10px; border-bottom:1px solid #f1f5f9; text-align:left; font-size:14px;
+}
+.table thead th{ font-weight:700; color:var(--muted); background:transparent; }
+
+/* Acciones en tablas */
+.table .actions button{ margin-left:8px; }
+
+/* =========================
+   Panel detalle y schedule
+   ========================= */
+.detail-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.detail-balance{ font-size:18px; font-weight:700; color:var(--primary-dark); }
+
+/* Historial (scroll) */
+.scroll-y{ max-height:260px; overflow:auto; padding-right:6px; }
+
+/* =========================
+   Formularios inline y helpers
+   ========================= */
+.row{ display:flex; gap:12px; }
+.col{ flex:1; }
+.small{ font-size:13px; color:var(--muted); }
+.muted{ color:var(--muted); }
+
+/* Badges */
+.badge{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; background:#f1f9f8; color:var(--primary-dark); }
+
+/* =========================
+   Alerts y toasts
+   ========================= */
+.alert{ padding:10px 12px; border-radius:8px; margin-bottom:12px; font-weight:600; }
+.alert.info{ background:#eef6f5; color:var(--primary-dark); }
+.alert.success{ background:#ecfdf3; color:var(--success); }
+.alert.error{ background:#fff1f2; color:var(--danger); }
+
+/* =========================
+   Modal (simple)
+   ========================= */
+.modal-backdrop{
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(8,8,8,0.35); z-index:1000; padding:20px;
+}
+.modal{
+  background:var(--card); border-radius:12px; padding:16px; width:100%; max-width:640px; box-shadow:var(--shadow);
+}
+
+/* =========================
+   Inputs tipo number pequeños
+   ========================= */
+.input-inline{ display:inline-block; width:auto; min-width:90px; }
+
+/* =========================
+   Responsive y utilidades
+   ========================= */
+@media (max-width:720px) {
+  .contenedor{ padding:12px; }
+  .cabecera, header {
+    flex-direction: column !important;
+    gap: 4px !important;
+    align-items: flex-start !important;
+    padding: 10px 8px !important;
+    border-radius: 0 0 14px 14px !important;
+    margin-bottom: 10px !important;
+  }
+  .cabecera h1, header h1 {
+    font-size: 18px !important;
+    margin-bottom: 2px;
+  }
+  .cabecera nav, header > div {
+    flex-direction: row !important;
+    gap: 6px !important;
+    width: 100%;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+  .cabecera nav a, .cabecera nav button, header button {
+    font-size: 14px !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+  }
+  .card{ padding:12px; }
+  .btn{ width:100%; }
+  .grid { grid-template-columns: 1fr !important; }
+}
+
+
+@media (max-width: 390px) {
+  /* Mejoras de navegación */
+  .cabecera, header {
+    margin: -12px -8px 12px;
+    padding: 12px !important;
+    border-radius: 0 0 16px 16px !important;
+  }
+
+  .cabecera h1, header h1 {
+    font-size: 16px !important;
+    line-height: 1.3;
+  }
+
+  .cabecera nav, header > div {
+    margin-top: 8px;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  /* Contenedor principal */
+  .contenedor, .container {
+    margin: 12px auto;
+    padding: 12px 8px !important;
+  }
+
+  /* Tarjetas y grids */
+  .card {
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    border-radius: 12px;
+  }
+
+  .grid {
+    gap: 12px;
+  }
+
+  /* Lista de préstamos */
+  .loan-item {
+    padding: 12px !important;
+  }
+
+  .loan-item .actions {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .loan-item .actions button {
+    flex: 1;
+    min-width: calc(50% - 3px) !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+  }
+
+  /* Detalles del préstamo */
+  #loanDetails .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  #loanDetails .detail-balance {
+    font-size: 18px;
+    margin-top: 4px;
+  }
+
+  #loanDetails .actions {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #loanDetails .actions .btn {
+    flex: 1;
+    min-width: calc(50% - 4px);
+  }
+
+  /* Tablas responsivas */
+  .table-container {
+    margin: 0 -8px;
+    padding: 0 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-admin, #paymentsTable, #scheduleTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 12px;
+  }
+
+  .table th, .table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  /* Controles de formulario */
+  input[type="text"], 
+  input[type="email"], 
+  input[type="password"],
+  input[type="number"], 
+  input[type="date"], 
+  select, 
+  textarea {
+    font-size: 16px !important;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  /* Botones */
+  .btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    height: auto;
+    min-height: 44px;
+  }
+
+  .btn.small {
+    padding: 8px 12px;
+    min-height: 36px;
+  }
+
+  /* Panel de admin */
+  .admin-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  /* Reportes */
+  .report-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card.report-card {
+    margin-bottom: 0;
+  }
+
+  /* Búsqueda */
+  .search {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  /* Scroll visual */
+  .table-admin::-webkit-scrollbar, 
+  #paymentsTable::-webkit-scrollbar, 
+  #scheduleTable::-webkit-scrollbar {
+    height: 4px;
+    background: #f1f1f100;
+  }
+
+  .table-admin::-webkit-scrollbar-thumb, 
+  #paymentsTable::-webkit-scrollbar-thumb, 
+  #scheduleTable::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+
+  .scroll-hint {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    margin: -6px 0 4px;
+  }
+
+  /* Espaciado y tipografía */
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .small.muted {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width:480px) {
+  .contenedor-form {
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .card {
+    padding: 10px;
+  }
+  
+  .table th, .table td {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+ 
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 20px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 16px !important; }
+  
+  /* Ocultar algunos elementos en móvil */
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+.hidden{ display:none !important; }
+.center{ text-align:center; }
+
+/* =========================
+   Estilos específicos Admin (tablas grandes)
+   ========================= */
+.admin-controls{ display:flex; gap:8px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+.admin-panel .card{ padding:12px; }
+.table-admin th, .table-admin td{ padding:10px; border-bottom:1px solid #f3f6f8; }
+
+/* =========================
+   Micro-interacciones
+   ========================= */
+.btn:hover{ transform:translateY(-1px); transition:transform .12s ease; }
+.list-item:hover{ box-shadow: 0 6px 18px rgba(9,30,66,0.04); transform: translateY(-2px); transition: all .14s ease; }
+
+/* =========================
+   Branding (logo/avatar)
+   ========================= */
+.avatar{
+  width:36px; height:36px; border-radius:50%; background:#eef2f4; display:inline-flex; align-items:center; justify-content:center; font-weight:700; color:var(--primary-dark);
+}
+
+/* =========================
+   Footer pequeño
+   ========================= */
+.footer{ margin-top:16px; color:var(--muted); font-size:13px; text-align:center; }
+
+/* =========================
+   Notas y comentarios
+   ========================= */
+.note{ background:#fff; border-left:4px solid var(--primary); padding:8px 12px; border-radius:6px; color:var(--muted); }
+
+/* Toasts y spinners */
+.toast-container{position:fixed;right:20px;top:20px;z-index:99999;display:flex;flex-direction:column;gap:8px}
+.toast{background:#111827;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 6px 18px rgba(9,30,66,0.12);min-width:200px}
+.toast.success{background:var(--primary)}
+.toast.error{background:var(--danger)}
+.toast.info{background:#0b84ff}
+.btn .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.6);border-top-color:transparent;border-radius:50%;margin-left:8px;vertical-align:middle;animation:spin .8s linear infinite}
+.btn.loading{opacity:0.8;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Inline error helpers */
+.input-error{ border-color: var(--danger) !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.06); }
+.inline-error{ display:block; color:var(--danger); font-size:13px; margin-top:6px; }
+
+/* Modal tweaks for small confirm modals created by UI helper */
+.modal-backdrop{ z-index:100000; }
+.modal{ max-width:440px; border-radius:10px; }
+
+/* Toast close button small styling */
+.toast button{ background:transparent; border:none; color:inherit; font-weight:700; cursor:pointer; }
+
+/* Schedule table styling (improved visual) */
+#scheduleWrap{ background: var(--card); padding:12px; border-radius:10px; box-shadow: var(--shadow); }
+#scheduleTable{ width:100%; border-collapse:separate; border-spacing:0 10px; }
+/* initial schedule styling moved later to keep a single scrollbar on #scheduleWrap */
+
+/* Reports quick cards polish */
+.card.report-card{ padding:14px; background:#fff; border-radius:12px; box-shadow: 0 6px 18px rgba(9,30,66,0.04); }
+.report-value{ font-weight:700; font-size:18px; margin-top:8px }
+.report-label{ color:var(--muted); font-size:13px }
+
+/* ======= Dashboard-specific overrides to match screenshot ======= */
+/* aliases: many templates use English names like .container or header */
+.container{ max-width:var(--max-width); margin:24px auto; padding:18px; }
+header{ display:flex; justify-content:space-between; align-items:center; background:var(--card); padding:14px 18px; border-radius:12px; box-shadow:var(--shadow); margin-bottom:14px; }
+header h1{ font-size:18px; font-weight:700; }
+
+/* Loan list items (JS inserts .loan-item) */
+.loan-item{ display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:10px; border:1px solid rgba(11,19,40,0.03); margin-bottom:10px; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,253,1)); }
+.loan-item .small{ color:var(--muted); }
+.loan-item .actions{ display:flex; gap:8px; }
+.loan-item .actions button{ background:transparent; color:var(--primary-dark); border:1px solid rgba(11,123,116,0.08); padding:6px 10px; border-radius:8px; font-weight:700 }
+
+/* Search box that appears on the left */
+.search{ display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+.search input{ padding:10px 12px; border-radius:8px; border:2px solid #111; width:100%; background:#fff; }
+.search button{ padding:8px 10px; border-radius:8px; background:#fff; border:1px solid rgba(11,19,40,0.06); }
+
+/* Detail balance styling */
+.detail-balance{ font-size:20px; font-weight:800; color:var(--text); }
+
+/* Payments table spacing to match screenshot */
+#paymentsTableWrap{ margin-top:10px; }
+#paymentsTable{ width:100%; border-collapse:collapse; margin-top:6px; }
+#paymentsTable thead th{ padding:10px 12px; border-bottom:2px solid #e6eef2; color:var(--muted); font-weight:700; }
+#paymentsTable tbody td{ padding:10px 12px; border-bottom:1px solid #f3f6f8; }
+#paymentsTable thead{ display:table-header-group; }
+
+/* small gap between section title and the table (like screenshot) */
+#paymentsTableWrap + hr, #paymentsTableWrap{ padding-top:6px; }
+
+/* Make schedule rows tighter and right-align currency columns */
+#scheduleTable td{ padding:8px 10px; }
+#scheduleTable tbody tr{ border-radius:8px; overflow:hidden; }
+
+/* Polished report cards */
+.card.report-card{ padding:14px; background:#fff; border-radius:12px; box-shadow: 0 10px 30px rgba(9,30,66,0.04); }
+.report-value{ font-weight:800; font-size:18px; margin-top:6px; color:var(--text); }
+
+/* Make primary buttons teal and pill-shaped like the screenshot */
+.btn{ border-radius:999px; padding:10px 14px; }
+.btn.secondary{ background:#f1f7f6; color:var(--primary-dark); }
+
+/* small layout tweaks */
+#loanDetails h3, .card h3{ font-size:15px; margin-bottom:14px }
+.small-muted{ color:var(--muted); font-size:13px }
+
+/* scrollbar styles for left lists and schedule */
+#scheduleTable tbody::-webkit-scrollbar, #loansList::-webkit-scrollbar{ width:10px }
+#scheduleTable tbody::-webkit-scrollbar-thumb, #loansList::-webkit-scrollbar-thumb{ background: rgba(11,19,40,0.06); border-radius:8px }
+
+/* ensure the payment card buttons cluster like screenshot */
+#loanDetails .btn{ margin-right:8px }
+
+/* selected loan highlight */
+.loan-item.selected{ box-shadow: 0 10px 30px rgba(11,19,40,0.04); border-left:6px solid var(--primary); background:linear-gradient(180deg,#ffffff,#fbffff); }
+.loan-item .actions .btn.small{ padding:6px 8px }
+
+/* payments table tweaks */
+#paymentsTable tbody td:nth-child(2){ text-align:right; font-variant-numeric: tabular-nums; }
+#paymentsTable .empty-row td{ text-align:center; color:var(--muted); padding:18px 12px; }
+
+
+/* Detail card spacing tweaks */
+.card hr{ border:0; border-top:1px solid #e6eef2; margin:18px 0; }
+#loanDetails .small.muted{ display:block; margin-bottom:10px; }
+/* action buttons spacing */
+#loanDetails .actions{ margin-top:14px; margin-bottom:14px; }
+
+/* payments table spacing */
+#paymentsTableWrap{ margin-top:14px; margin-bottom:18px; }
+#paymentsTable thead th{ padding-top:14px; padding-bottom:14px; }
+#paymentsTable tbody td{ padding-top:12px; padding-bottom:12px; }
+
+/* headers inside loan details */
+#loanDetails h4{ margin-top:18px; margin-bottom:12px; font-size:16px; }
+#scheduleWrap{ margin-top:16px; }
+
+/* ensure a clear gap between detail header and actions */
+#loanDetails > div:first-child{ margin-bottom:12px; }
+
+/* ====== Strong visual overrides to better match the provided screenshot ====== */
+/* Container and page spacing */
+.container{ padding:28px; max-width:1150px; }
+
+/* Cards: slightly larger, pronounced shadow and airy padding */
+.card{ padding:18px; border-radius:14px; box-shadow: 0 12px 30px rgba(11,19,40,0.06); }
+
+/* Detail header (client + meta + balance) */
+.detail-header{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.detail-client{ font-size:18px; font-weight:800; color:var(--text); }
+.detail-meta{ color:var(--muted); font-size:13px; margin-top:6px; }
+.detail-balance{ font-size:20px; font-weight:900; color:var(--text); text-align:right; }
+
+/* Actions row: primary action filled teal, others muted pills */
+#loanDetails .actions{ display:flex; gap:10px; align-items:center; margin-top:8px; }
+#loanDetails .btn{ padding:10px 14px; border-radius:999px; font-weight:700; }
+#loanDetails .btn:first-child{ background:var(--primary); color:#fff; box-shadow: 0 6px 18px rgba(14,165,164,0.12); }
+#loanDetails .btn.secondary{ background:#f3faf9; color:var(--primary-dark); border:1px solid rgba(11,123,116,0.06); }
+
+/* Payments & schedule area spacing */
+#paymentsTable thead th{ font-weight:700; color:var(--muted); border-bottom:2px solid rgba(230,238,242,0.9); }
+#paymentsTable tbody tr{ background:transparent; }
+
+/* Schedule: use normal table layout so header and rows align; outer wrapper scrolls */
+#scheduleTable{ width:100%; border-collapse:collapse; }
+#scheduleTable thead th{ padding:12px 12px; color:var(--muted); font-weight:800; border-bottom:2px solid rgba(230,238,242,0.9); background:transparent; }
+#scheduleTable thead th:nth-child(1), #scheduleTable thead th:nth-child(2){ text-align:left; }
+#scheduleTable thead th:nth-child(3), #scheduleTable thead th:nth-child(4), #scheduleTable thead th:nth-child(5), #scheduleTable thead th:nth-child(6){ text-align:right; }
+#scheduleTable tbody tr{ background:#fff; }
+#scheduleTable tbody td{ padding:10px 12px; border-bottom:1px solid #f3f6f8; vertical-align:middle; }
+#scheduleTable tbody td:nth-child(1), #scheduleTable tbody td:nth-child(2){ text-align:left; }
+#scheduleTable tbody td:nth-child(3), #scheduleTable tbody td:nth-child(4), #scheduleTable tbody td:nth-child(5), #scheduleTable tbody td:nth-child(6){ text-align:right; font-variant-numeric: tabular-nums; }
+
+/* Reports: align cards horizontally and match rounded white tiles */
+.report-row{ display:flex; gap:12px; margin-top:6px; }
+.report-row .card.report-card{ flex:1; padding:16px; border-radius:12px; }
+.report-row .report-label{ font-size:13px; color:var(--muted); }
+.report-row .report-value{ font-size:20px; font-weight:800; margin-top:8px; }
+
+/* Left loans list: selected visual accent */
+.loan-item{ transition: all .18s ease; }
+.loan-item.selected{ border-left:6px solid var(--primary); padding-left:10px; box-shadow: 0 12px 30px rgba(11,19,40,0.06); }
+
+/* subtle scrollbar for all vertical lists */
+::-webkit-scrollbar{ height:8px; width:10px; }
+::-webkit-scrollbar-thumb{ background: rgba(11,19,40,0.06); border-radius:8px; }
+
+/* responsive tweak: keep action buttons on one line where possible */
+@media (max-width:980px){ #loanDetails .actions{ flex-wrap:wrap; } }
+
+/* small typography tweaks to match screenshot */
+body{ font-size:15px; }
+.card h3{ font-size:16px; font-weight:800; }
+.small.muted{ color:var(--muted); }
+
+

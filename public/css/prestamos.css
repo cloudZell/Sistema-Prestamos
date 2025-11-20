@@ -1,0 +1,34 @@
+.progreso-pago {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-top: 5px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.progreso-pago span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.estado-pagado {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+td div {
+    margin-bottom: 3px;
+}
